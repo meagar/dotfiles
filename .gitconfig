@@ -1,0 +1,49 @@
+[alias]
+	# -s omits the more verbose stuff from the typical status message
+	st = status -s
+	df = diff
+	dfw = diff --color-words
+	dfns = diff --ignore-space-at-eol
+	co = checkout
+	ci = commit
+	br = branch
+	sm = submodule
+	# looks like this (with more colour):
+	# * c12ed67 ME 4 minutes ago Add setup_load_paths and accompanying README (HEAD, origin/master, origin/HEAD, master)
+	lg = log --graph --pretty='format:%C(yellow)%h %Cblue%s%Cred%d  %Creset%aN %ar%Creset'
+	# Tell git to assume a specific file hasn't changed, even if it has
+	ignore-change = update-index --assume-unchanged
+	# undo ignore-index
+	no-ignore-change = update-index --assume-unchanged
+	# check for introduced EOL-whitespace
+	sp = diff --check
+	# Git flow aliases
+	fs = flow feature start
+	ff = flow feature finish
+	rs = flow release start
+	rf = flow release finish
+	hs = flow hotfix start
+	hf = flow hotfix finish
+[diff]
+	color = auto
+[status]
+	color = auto
+[color]
+	ui = true
+[core]
+	excludesfile = /Users/matthew.eagar/.gitignore
+	autocrlf=input
+[mailmap]
+	# Use by my above lg alias to map committers to their two character initials
+	file = /Users/matthew.eagar/.gitmailmap
+[push]
+	# Only push the branch I'm currently working on
+	default = tracking
+[core]
+	# Move to the end of the line and start appending when VIM opens to edit a commit message
+	editor = vim -c star!
+[user]
+	name = Matthew Eagar
+	email = matthew.eagar@mosaic.com
+[pager]
+	status = false
