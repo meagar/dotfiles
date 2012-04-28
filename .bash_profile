@@ -7,8 +7,19 @@ alias grep='grep --color=auto'
 alias df='df -h'
 alias du='du -h'
 
+alias s="git status -s"
+alias gl="git lg"
+alias gco="git checkout"
+alias gm="git merge --no-ff"
+alias gmf="git merge -ff-only"
+alias gp="git push"
+alias gpu="git pull"
+alias gci="git commit"
+alias gap="git add -p"
+
 alias rake='bundle exec rake'
 alias tt='touch tmp/restart.txt'
+alias rails="./script/rails"
 
 export LESS='-RNM'
 
