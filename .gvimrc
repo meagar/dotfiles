@@ -35,7 +35,7 @@ set go-=T
 set go-=L
 set go-=r
 
-set gfn="Bitstream Vera Sans Mono:h11"
+set gfn=Bitstream\ Vera\ Sans\ Mono:h11
 
 autocmd BufRead *\.txt setlocal formatoptions=l
 autocmd BufRead *\.txt setlocal lbr
