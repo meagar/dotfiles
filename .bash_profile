@@ -1,3 +1,4 @@
+alias .git='git --work-tree=/Users/matthew.eagar --git-dir=/Users/matthew.eagar/projects/dotfiles.git'
 
 alias ls='ls -lFG'
 alias rm='rm -i'
