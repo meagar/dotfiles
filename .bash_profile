@@ -8,12 +8,12 @@ alias df='df -h'
 alias du='du -h'
 
 alias s="git status -s"
+alias d="git diff"
 alias gl="git lg"
 alias gco="git checkout"
 alias gm="git merge --no-ff"
 alias gmf="git merge -ff-only"
-alias gp="git push"
-alias gpu="git pull"
+alias gp="git smart-pull"
 alias gci="git commit"
 alias gap="git add -p"
 
@@ -34,10 +34,15 @@ export PS1='\n\[\e[0;32m\]\h/\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]$(par
 
 export USER_BASH_COMPLETION_DIR=~/.bash_completion.d
 
-if [ -f /usr/local/etc/bash_completion ]; then
-	. /usr/local/etc/bash_completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+	. `brew --prefix`/etc/bash_completion
 fi
 
 export EDITOR="/usr/bin/vim"
 
 set -o vi
+
+export PATH="~/bin:$PATH"
+
+# Enable rbenv shims
+eval "$(rbenv init -)"
