@@ -51,4 +51,7 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
+au BufRead,BufNewFile *.thor set filetype=ruby
+
 call pathogen#infect()
+

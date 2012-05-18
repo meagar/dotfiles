@@ -31,4 +31,6 @@ autocmd VimEnter * set vb t_vb=
 
 set hlsearch
 
+au BufRead,BufNewFile *.thor set filetype=ruby
+
 call pathogen#infect()

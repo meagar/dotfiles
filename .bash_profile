@@ -10,7 +10,7 @@ alias du='du -h'
 
 alias s="git status -s"
 alias d="git diff"
-alias gl="git lg"
+alias lg="git lg"
 alias gco="git checkout"
 alias gm="git merge --no-ff"
 alias gmf="git merge -ff-only"

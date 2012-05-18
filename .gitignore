@@ -1,3 +1,5 @@
 *.sw?
 .DS_store
 vendor/bundle
+/.rbenv-version
+/notes.txt
