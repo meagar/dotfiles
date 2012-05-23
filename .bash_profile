@@ -19,6 +19,7 @@ alias gci="git commit"
 alias gap="git add -p"
 
 alias rake='bundle exec rake'
+alias thor='bundle exec thor'
 alias tt='touch tmp/restart.txt'
 alias rails="./script/rails"
 
