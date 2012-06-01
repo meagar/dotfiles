@@ -55,3 +55,5 @@ au BufRead,BufNewFile *.thor set filetype=ruby
 
 call pathogen#infect()
 
+set statusline=%{fugitive#statusline()}%h%m%r\ %f%=%c,%l/%L\ %P
+set laststatus=2
