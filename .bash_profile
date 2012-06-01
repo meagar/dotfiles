@@ -32,7 +32,10 @@ parse_git_branch () {
 }
 
 export PS1='\n\[\e[0;32m\]\h/\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]$(parse_git_branch) \$\[\e[m\] \[\e[0m\]'
-#export PS1='\n\h/\u \w $(parse_git_branch) \$ '
+# Staging:
+#export PS1='\n\[\e[0;33m\]\h/\u\[\e[m\] \[\e[1;33m\]\w\[\e[m\] \[\e[0;33m\]$(parse_git_branch) \$\[\e[m\] \[\e[0m\]'
+# Production
+#export PS1='\n\[\e[0;31m\]\h/\u\[\e[m\] \[\e[1;31m\]\w\[\e[m\] \[\e[0;31m\]$(parse_git_branch) \$\[\e[m\] \[\e[0m\]'
 
 export USER_BASH_COMPLETION_DIR=~/.bash_completion.d
 
