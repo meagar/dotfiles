@@ -27,11 +27,7 @@ export LESS='-RNM'
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
-parse_git_branch () {
-	git branch 2> /dev/null | grep "\*" | sed -e 's/\* //g'
-}
-
-export PS1='\n\[\e[0;32m\]\h/\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]$(parse_git_branch) \$\[\e[m\] \[\e[0m\]'
+export PS1='\n\[\e[0;32m\]\h/\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\]\[\e[1;32m\]$(__git_ps1) \$\[\e[m\] \[\e[0m\]'
 # Staging:
 #export PS1='\n\[\e[0;33m\]\h/\u\[\e[m\] \[\e[1;33m\]\w\[\e[m\] \[\e[0;33m\]$(parse_git_branch) \$\[\e[m\] \[\e[0m\]'
 # Production
