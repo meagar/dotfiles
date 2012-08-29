@@ -21,7 +21,9 @@ alias gap="git add -p"
 alias rake='bundle exec rake'
 alias thor='bundle exec thor'
 alias tt='touch tmp/restart.txt'
-alias rails="./script/rails"
+alias rails="bundle exec rails"
+
+alias vsh="vagrant ssh app"
 
 export LESS='-RNM'
 
@@ -46,4 +48,4 @@ set -o vi
 export PATH="~/bin:$PATH"
 
 # Enable rbenv shims
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"

@@ -3,6 +3,7 @@ syntax on
 set ruler
 set ts=2
 set sw=2
+set et
 
 set nocompatible          " We're running Vim, not Vi!
 syntax on                 " Enable syntax highlighting
@@ -34,3 +35,5 @@ set hlsearch
 au BufRead,BufNewFile *.thor set filetype=ruby
 
 call pathogen#infect()
+
+nnoremap <cr> :nohlsearch<cr><cr>

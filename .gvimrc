@@ -4,6 +4,7 @@ set ruler
 set bs=2 " backspace over anything
 set ts=2
 set sw=2
+set et
 
 set nocompatible          " We're running Vim, not Vi!
 syntax on                 " Enable syntax highlighting
@@ -57,3 +58,5 @@ call pathogen#infect()
 
 set statusline=%{fugitive#statusline()}%h%m%r\ %f%=%c,%l/%L\ %P
 set laststatus=2
+
+nnoremap <cr> :nohlsearch<cr><cr>
