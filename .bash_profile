@@ -43,9 +43,9 @@ fi
 
 export EDITOR="/usr/bin/vim"
 
-set -o vi
+#set -o vi
 
 export PATH="~/bin:$PATH"
 
 # Enable rbenv shims
-#eval "$(rbenv init -)"
+eval "$(rbenv init -)"
