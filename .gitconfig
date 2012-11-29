@@ -31,7 +31,7 @@
 [color]
 	ui = true
 [core]
-	excludesfile = /Users/matthew.eagar/.gitignore
+	excludesfile = /home/vagrant/.gitignore
 	autocrlf=input
 [mailmap]
 	# Use by my above lg alias to map committers to their two character initials

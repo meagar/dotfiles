@@ -1,6 +1,6 @@
 alias .git="git --work-tree=$HOME --git-dir=$HOME/projects/dotfiles.git"
 
-alias ls='ls -lF --color=auto'
+alias ls='ls -lFh --color=auto'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
