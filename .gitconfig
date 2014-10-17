@@ -17,6 +17,7 @@
 	no-ignore-change = update-index --assume-unchanged
 	# check for introduced EOL-whitespace
 	sp = diff --check
+	ss = stash show -p stash@{0}
 	# Git flow aliases
 	fs = flow feature start
 	ff = flow feature finish
@@ -31,7 +32,7 @@
 [color]
 	ui = true
 [core]
-	excludesfile = /Users/matthew.eagar/.gitignore
+	excludesfile = /Users/meagar/.gitignore
 	autocrlf=input
 [mailmap]
 	# Use by my above lg alias to map committers to their two character initials
@@ -41,9 +42,11 @@
 	default = tracking
 [core]
 	# Move to the end of the line and start appending when VIM opens to edit a commit message
-	editor = vim -c star!
+	editor = vim
 [user]
 	name = Matthew Eagar
-	email = matthew.eagar@mosaic.com
+	email = meagar@500px.com
 [pager]
 	status = false
+[url "git@github.com:"]
+	insteadOf = https://github.com/

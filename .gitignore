@@ -3,3 +3,4 @@
 vendor/bundle
 /.rbenv-version
 /notes.txt
+.bundle

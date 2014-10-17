@@ -34,6 +34,21 @@ set hlsearch
 
 au BufRead,BufNewFile *.thor set filetype=ruby
 
+" To disable a plugin, add it's bundle name to the following list
+let g:pathogen_disabled = []
+"
+" for some reason the csscolor plugin is very slow when run on the terminal
+" but not in GVim, so disable it if no GUI is running
+if !has('gui_running')
+  call add(g:pathogen_disabled, 'Command-T')
+endif
+
 call pathogen#infect()
 
 nnoremap <cr> :nohlsearch<cr><cr>
+
+set wildignore+="vendor/bundle/**"
+set wildignore+="tmp/**"
+
+set rtp+=$GOROOT/misc/vim
+

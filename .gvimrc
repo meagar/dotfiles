@@ -60,3 +60,8 @@ set statusline=%{fugitive#statusline()}%h%m%r\ %f%=%c,%l/%L\ %P
 set laststatus=2
 
 nnoremap <cr> :nohlsearch<cr><cr>
+
+set wildignore+="vendor/bundle/**"
+set wildignore+="tmp/**"
+
+
