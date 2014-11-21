@@ -64,4 +64,5 @@ nnoremap <cr> :nohlsearch<cr><cr>
 set wildignore+="vendor/bundle/**"
 set wildignore+="tmp/**"
 
+let g:netrw_list_hide= '^\..*$'
 

@@ -41,11 +41,15 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
 fi
 
 export GOPATH=~/.go
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
-export PATH="$PATH:~/bin:/usr/local/sbin:$GOPATH/bin"
-
-# Enable rbenv shims
-eval "$(rbenv init -)"
+export PATH="/usr/local/sbin:$PATH"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+
+# Enable rbenv shims
+eval "$(rbenv init -)"
