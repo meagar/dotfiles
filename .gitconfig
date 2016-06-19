@@ -45,7 +45,7 @@
 	editor = vim
 [user]
 	name = Matthew Eagar
-	email = meagar@500px.com
+	email = meagar@gmail.com
 [pager]
 	status = false
 [url "git@github.com:"]
