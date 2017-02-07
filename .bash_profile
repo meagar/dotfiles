@@ -53,3 +53,5 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 
 # Enable rbenv shims
 eval "$(rbenv init -)"
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"

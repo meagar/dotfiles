@@ -1,0 +1,26 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - '**/*.haml'
+    - 'spec/**/*_spec.rb'
+
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/LineLength:
+  Max: 100
+
+Style/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
