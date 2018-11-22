@@ -6,7 +6,7 @@
 	dfns = diff --ignore-space-at-eol
 	co = checkout
 	ci = commit
-	br = branch
+	br = branch -v -v
 	sm = submodule
 	# looks like this (with more colour):
 	# * c12ed67 ME 4 minutes ago Add setup_load_paths and accompanying README (HEAD, origin/master, origin/HEAD, master)
@@ -52,3 +52,7 @@
 	insteadOf = https://github.com/
 [interactive]
 	singleKey = true
+[rebase]
+	instructionFormat = (%an <%ae>) %s
+[fetch]
+	prune = true
