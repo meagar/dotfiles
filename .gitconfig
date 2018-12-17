@@ -29,8 +29,6 @@
 	color = auto
 [status]
 	color = auto
-[color]
-	ui = true
 [core]
 	excludesfile = /Users/matt.eagar/.gitignore
 	autocrlf=input

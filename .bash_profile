@@ -65,4 +65,16 @@ export PATH="$HOME/bin:$PATH"
 
 set -o vi
 
-export CDPATH="$CDPATH:$HOME/src/github.com/SMARTeacher"
+export CDPATH="$CDPATH:$HOME/src/github.com/"
+
+alias tf="terragrunt"
+alias tg="terragrunt"
+alias terraform="terragrunt"
+alias tgp="tg plan --terragrunt-source-update"
+alias tgp-prod="AWS_PROFILE=production tgp"
+alias tg-prod="AWS_PROFILE=production tg"
+alias tgp-dev="AWS_PROFILE=dev tgp"
+alias tg-dev="AWS_PROFILE=dev tg"
+alias dc="docker-compose"
+
+export EDITOR=vim
