@@ -3,3 +3,8 @@
 vendor/bundle
 /notes.txt
 .bundle
+/java/learn-CelsiusConverterProject/nbproject/private/
+/NetBeansProjects/mavenproject1/target/
+/NetBeansProjects/java-ray/nbproject/private/
+/NetBeansProjects/ray/nbproject/private/
+/NetBeansProjects/ray/build/

@@ -43,7 +43,7 @@
 	editor = vim
 [user]
 	name = Matthew Eagar
-	email = meagar@gmail.com
+	email = meagar@hey.com
 [pager]
 	status = false
 [url "git@github.com:"]
@@ -54,3 +54,7 @@
 	instructionFormat = (%an <%ae>) %s
 [fetch]
 	prune = true
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main

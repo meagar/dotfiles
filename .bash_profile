@@ -1,3 +1,11 @@
+export BASH_SILENCE_DEPRECATION_WARNING=1
+export EDITOR=vim
+export GOARCH=arm64
+export CGO_ENABLED=1
+export GOPRIVATE=github.com/smarteacher
+
+export SANDBOX_NAME=matt.eagar
+
 alias .git="git --work-tree=$HOME --git-dir=$HOME/projects/dotfiles.git"
 
 alias ls='ls -lFG'
@@ -29,7 +37,8 @@ alias guard="bundle exec guard"
 
 export LESS='-RNM'
 
-export PS1='\n\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\]\[\e[1;32m\]$(__git_ps1) \$\[\e[m\] \[\e[0m\]'
+#export PS1='\n\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\]\[\e[1;32m\]$(__git_ps1) \$\[\e[m\] \[\e[0m\]'
+export PS1='\[\e[1;34m\]\w\[\e[m\]\[\e[1;32m\]$(__git_ps1) \$\[\e[m\] \[\e[0m\]'
 # Staging:
 #export PS1='\n\[\e[0;33m\]\h/\u\[\e[m\] \[\e[1;33m\]\w\[\e[m\] \[\e[0;33m\]$(parse_git_branch) \$\[\e[m\] \[\e[0m\]'
 # Production
@@ -37,23 +46,18 @@ export PS1='\n\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\]\[\e[1;32m\]$(__git_p
 
 #export USER_BASH_COMPLETION_DIR=~/.bash_completion.d
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-	. `brew --prefix`/etc/bash_completion
-fi
 
+#export GOROOT=/usr/local/opt/go/libexec
 export GOPATH=~/.go
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOPATH/bin:$GOPATH/bin/darwin_arm64
 
 export PATH="/usr/local/sbin:$PATH"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
 
-# export PATH="$HOME/.rbenv/bin:$PATH"
-
-# Enable rbenv shims
-eval "$(rbenv init -)"
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
@@ -65,7 +69,7 @@ export PATH="$HOME/bin:$PATH"
 
 set -o vi
 
-export CDPATH="$CDPATH:$HOME/src/github.com/"
+export CDPATH="$CDPATH:$HOME/src/github.com/:$HOME/src/github.com/smarteacher"
 
 alias tf="terragrunt"
 alias tg="terragrunt"
@@ -77,4 +81,29 @@ alias tgp-dev="AWS_PROFILE=dev tgp"
 alias tg-dev="AWS_PROFILE=dev tg"
 alias dc="docker-compose"
 
-export EDITOR=vim
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+	. `brew --prefix`/etc/bash_completion
+fi
+. "$HOME/.cargo/env"
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# Enable rbenv shims
+eval "$(rbenv init -)"
+. ~/.env_secrets
+export PATH="$(pyenv root)/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/meagar/google-cloud-sdk/path.bash.inc' ]; then . '/Users/meagar/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/meagar/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/meagar/google-cloud-sdk/completion.bash.inc'; fi
+export PATH="/usr/local/opt/llvm/bin:$PATH"
