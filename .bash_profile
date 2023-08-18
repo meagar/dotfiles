@@ -37,13 +37,6 @@ export PS1='\n\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\]\[\e[1;32m\]$(__git_p
 
 #export USER_BASH_COMPLETION_DIR=~/.bash_completion.d
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-	. `brew --prefix`/etc/bash_completion
-fi
-
-export GOPATH=~/.go
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
 export PATH="/usr/local/sbin:$PATH"
 
@@ -51,9 +44,6 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 
 # export PATH="$HOME/.rbenv/bin:$PATH"
-
-# Enable rbenv shims
-eval "$(rbenv init -)"
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
@@ -77,4 +67,30 @@ alias tgp-dev="AWS_PROFILE=dev tgp"
 alias tg-dev="AWS_PROFILE=dev tg"
 alias dc="docker-compose"
 
-export EDITOR=vim
+export EDITOR=nvim
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+
+. /Users/meagar/src/github.com/affinity/affinity/.profile_dev
+export PATH=/opt/homebrew/opt/openssl@3/bin:$PATH
+export DISABLE_MODEL_SCHEMA=1
+
+export GOPATH=~/.go
+export GOROOT=/usr/local/go/
+export PATH="$PATH:~/.cargo/bin"
+export PATH="~/.local/bin:$PATH"
+
+
+# Enable rbenv shims
+eval "$(rbenv init -)"
+alias vim=nvim
+alias vi=nvim
+
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+export DISABLE_MODEL_SCHEMA=1
+
+# Ctrl+D won't close the shell; instead must type "exit" or "logout"
+set -o ignoreeof
