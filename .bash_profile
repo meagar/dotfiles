@@ -1,4 +1,4 @@
-alias .git="git --work-tree=$HOME --git-dir=$HOME/projects/dotfiles.git"
+alias .git="git --work-tree=$HOME --git-dir=$HOME/src/github.com/meagar/dotfiles/.git"
 
 alias ls='ls -lFG'
 alias rm='rm -i'
