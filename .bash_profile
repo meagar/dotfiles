@@ -1,5 +1,7 @@
 alias .git="git --work-tree=$HOME --git-dir=$HOME/src/github.com/meagar/dotfiles/.git"
 
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 alias ls='ls -lFG'
 alias rm='rm -i'
 alias mv='mv -i'
@@ -73,7 +75,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
-. /Users/meagar/src/github.com/affinity/affinity/.profile_dev
 export PATH=/opt/homebrew/opt/openssl@3/bin:$PATH
 export DISABLE_MODEL_SCHEMA=1
 
@@ -94,3 +95,5 @@ export DISABLE_MODEL_SCHEMA=1
 
 # Ctrl+D won't close the shell; instead must type "exit" or "logout"
 set -o ignoreeof
+
+export PATH="~/.rubies/ruby-master/bin:/usr/local/sbin:$PATH"

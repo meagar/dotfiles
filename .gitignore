@@ -1,5 +1,0 @@
-*.sw?
-.DS_store
-vendor/bundle
-/notes.txt
-.bundle
