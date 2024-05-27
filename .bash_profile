@@ -96,4 +96,4 @@ export DISABLE_MODEL_SCHEMA=1
 # Ctrl+D won't close the shell; instead must type "exit" or "logout"
 set -o ignoreeof
 
-export PATH="~/.rubies/ruby-master/bin:/usr/local/sbin:$PATH"
+#export PATH="~/.rubies/ruby-master/bin:/usr/local/sbin:$PATH"

@@ -37,8 +37,8 @@
 	editor = vim
 [user]
 	name = Matthew Eagar
-	email = meagar@gmail.com
-	signingkey = AD11FF1506164A2A
+	email = matt@switchgrowth.com
+	signingkey = 3E99B77ADC4FBD26
 [pager]
 	status = false
 [url "git@github.com:"]
@@ -54,5 +54,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-#[commit]
-#	gpgsign = true
+[commit]
+	gpgsign = true
