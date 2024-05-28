@@ -30,6 +30,13 @@ vim.cmd("set shiftwidth=2")
 vim.cmd("set colorcolumn=80")
 vim.cmd("highlight ColorColumn guibg=#191923")
 
+-- Navigate vim panes better
+-- vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
+-- vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')
+-- vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
+-- vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
+--
 -- Code folding based on indentation
---vim.cmd("set foldmethod=indent")
+vim.cmd("set foldmethod=indent")
+vim.cmd("set foldlevel=1")
 
