@@ -30,6 +30,9 @@ vim.cmd("set shiftwidth=2")
 vim.cmd("set colorcolumn=80")
 vim.cmd("highlight ColorColumn guibg=#191923")
 
+-- Yank to the system clipboard
+vim.cmd("set clipboard+=unnamedplus")
+
 -- Navigate vim panes better
 -- vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
 -- vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')
@@ -38,5 +41,5 @@ vim.cmd("highlight ColorColumn guibg=#191923")
 --
 -- Code folding based on indentation
 vim.cmd("set foldmethod=indent")
-vim.cmd("set foldlevel=1")
+vim.cmd("set foldlevel=99")
 

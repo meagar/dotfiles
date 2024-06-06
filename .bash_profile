@@ -97,3 +97,4 @@ export DISABLE_MODEL_SCHEMA=1
 set -o ignoreeof
 
 #export PATH="~/.rubies/ruby-master/bin:/usr/local/sbin:$PATH"
+. "$HOME/.cargo/env"

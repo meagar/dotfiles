@@ -5,8 +5,20 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       local builtin = require("telescope.builtin")
-      vim.keymap.set("n", "<C-p>", builtin.find_files, {})
-      vim.keymap.set("n", "<C-f>", builtin.live_grep, {})
+      local file_ignore_patterns = {
+        "sorbet/",
+      }
+
+      vim.keymap.set("n", "<C-p>", function()
+        builtin.find_files({
+          file_ignore_patterns = file_ignore_patterns
+        })
+      end, {})
+      vim.keymap.set("n", "<C-f>", function()
+        builtin.live_grep({
+          file_ignore_patterns = file_ignore_patterns
+        })
+      end, {})
     end
   },
   {
