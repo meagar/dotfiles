@@ -17,6 +17,8 @@ local ops = {}
 
 require("lazy").setup("plugins")
 
+vim.cmd("set spell")
+vim.cmd("set ignorecase") -- required before smartcase
 vim.cmd("set smartcase")
 vim.cmd("set relativenumber")
 

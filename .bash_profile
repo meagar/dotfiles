@@ -98,3 +98,5 @@ set -o ignoreeof
 
 #export PATH="~/.rubies/ruby-master/bin:/usr/local/sbin:$PATH"
 . "$HOME/.cargo/env"
+
+export PATH="/Applications/Postgres.app/Contents/Versions/16/bin:${PATH}"
