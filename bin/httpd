@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ "$#" -ne 2 ]
+then
+  echo "Usage: httpd [DIRECTORY] [PORT]"
+  exit -1
+fi
+
+echo "Serving $1 on http://localhost:$2"
+
+ruby -run -ehttpd $1 -p$2
