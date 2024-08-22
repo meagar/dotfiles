@@ -1,0 +1,9 @@
+#!/bin/bash
+
+STASH_INDEX=$1
+
+if [ -z $STASH_INDEX ]; then
+  STASH_INDEX=0
+fi
+
+git stash show -p "stash@{${STASH_INDEX}}"

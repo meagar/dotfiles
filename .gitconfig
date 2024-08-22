@@ -18,7 +18,7 @@
 	ignored-change = ls-files -v
 	# check for introduced EOL-whitespace
 	sp = diff --check
-	ss = stash show -p stash@{0}
+  #ss = stash show -p stash@{$1}
 [diff]
 	color = auto
 [status]
@@ -56,3 +56,5 @@
 	required = true
 [commit]
 	gpgsign = true
+[gc]
+	auto = 0

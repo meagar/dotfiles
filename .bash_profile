@@ -100,3 +100,10 @@ set -o ignoreeof
 . "$HOME/.cargo/env"
 
 export PATH="/Applications/Postgres.app/Contents/Versions/16/bin:${PATH}"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/meagar/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/Users/meagar/Downloads/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/meagar/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/meagar/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"

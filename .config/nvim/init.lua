@@ -20,6 +20,7 @@ require("lazy").setup("plugins")
 vim.cmd("set spell")
 vim.cmd("set ignorecase") -- required before smartcase
 vim.cmd("set smartcase")
+vim.cmd("set number")
 vim.cmd("set relativenumber")
 
 -- Soft tabs
@@ -45,3 +46,4 @@ vim.cmd("set clipboard+=unnamedplus")
 vim.cmd("set foldmethod=indent")
 vim.cmd("set foldlevel=99")
 
+vim.cmd("match Todo /pipline/")

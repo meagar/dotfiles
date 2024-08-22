@@ -5,6 +5,7 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       local builtin = require("telescope.builtin")
+      -- local actions = require("telescope.actions")
       local file_ignore_patterns = {
         "sorbet/",
       }
@@ -19,6 +20,9 @@ return {
           file_ignore_patterns = file_ignore_patterns
         })
       end, {})
+      -- vim.keymap.set("n", "<C-d>", function()
+      --   actions.cycle_history_next()
+      -- end, {})
     end
   },
   {
