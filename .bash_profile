@@ -2,7 +2,7 @@ alias .git="git --work-tree=$HOME --git-dir=$HOME/src/github.com/meagar/dotfiles
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-alias ls='ls -lFG'
+alias ls='ls -lFGh'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
@@ -28,6 +28,8 @@ alias tt='touch tmp/restart.txt'
 alias rails="bundle exec rails"
 alias foreman="bundle exec foreman"
 alias guard="bundle exec guard"
+alias srb="bundle exec srb"
+alias tp="bundle exec tapioca"
 
 export LESS='-RNM'
 
@@ -107,3 +109,15 @@ if [ -f '/Users/meagar/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/Use
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/meagar/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/meagar/Downloads/google-cloud-sdk/completion.bash.inc'; fi
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+_thorcomplete() {
+  local cur
+  _get_comp_words_by_ref -n : cur
+
+  COMPREPLY=($(compgen -W "`bundle exec thor list | grep 'thor ' | cut -d " " -f 2`" -- $cur))
+
+  __ltrim_colon_completions "$cur"
+}
+complete -o default -o nospace -F _thorcomplete thor
+
+export RUBY_YJIT_ENABLE=1
