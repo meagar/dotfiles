@@ -120,4 +120,14 @@ _thorcomplete() {
 }
 complete -o default -o nospace -F _thorcomplete thor
 
+_rakecomplete() {
+  local cur
+  _get_comp_words_by_ref -n : cur
+
+  COMPREPLY=($(compgen -W "`bundle exec rake -T | cut -d " " -f 2`" -- $cur))
+
+  __ltrim_colon_completions "$cur"
+}
+complete -o default -o nospace -F _rakecomplete rake
+
 export RUBY_YJIT_ENABLE=1

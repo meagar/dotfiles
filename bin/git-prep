@@ -1,0 +1,10 @@
+#!/bin/bash
+
+bundle exec tapioca dsl
+
+GEMFILE_UPDATED=$(git diff main -- Gemfile Gemfile.lock)
+if [[ -n "${GEMFILE_UPDATED}" ]]
+then
+  echo "Gemfile/Gemfile.lock modified, running tapioca gem"
+  bundle exec tapioca gem
+fi

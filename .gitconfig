@@ -8,9 +8,10 @@
 	ci = commit
 	br = branch -v -v --sort=-committerdate
 	sm = submodule
+	sl = stash list
 	# looks like this (with more colour):
 	# * c12ed67 ME 4 minutes ago Add setup_load_paths and accompanying README (HEAD, origin/master, origin/HEAD, master)
-	lg = log --graph --pretty='format:%C(yellow)%h %Cblue%s%Cred%d  %Creset%aN %ar%Creset'
+	lg = log --graph --pretty='format:%C(yellow)%h %Cblue%s%Cred%d	%Creset%aN %ar%Creset'
 	# Tell git to assume a specific file hasn't changed, even if it has
 	ignore-change = update-index --assume-unchanged
 	# undo ignore-index
@@ -18,7 +19,7 @@
 	ignored-change = ls-files -v
 	# check for introduced EOL-whitespace
 	sp = diff --check
-  #ss = stash show -p stash@{$1}
+	#ss = stash show -p stash@{$1}
 [diff]
 	color = auto
 [status]
@@ -37,7 +38,7 @@
 	editor = vim
 [user]
 	name = Matthew Eagar
-	email = matt@switchgrowth.com
+	email = meagar@gmail.com
 	signingkey = 3E99B77ADC4FBD26
 [pager]
 	status = false
@@ -58,3 +59,5 @@
 	gpgsign = true
 [gc]
 	auto = 0
+[init]
+	defaultBranch = main

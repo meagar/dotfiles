@@ -11,6 +11,11 @@ dynamic_padding = true
 
 history = 100000
 
+[selection]
+
+# Save selected text to the clipboard
+save_to_clipboard = true
+
 [font]
 
 # Normal font style

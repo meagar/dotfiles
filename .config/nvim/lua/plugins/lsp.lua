@@ -1,4 +1,3 @@
-
 return {
   {
     "williamboman/mason.nvim",
@@ -10,8 +9,43 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "tsserver", "ruby_lsp", "sorbet" }
+        ensure_installed = { "lua_ls", "tsserver", "ruby_lsp", "sorbet", "gopls" }
       })
+
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      local mason_lspconfig = require("mason-lspconfig")
+
+      local servers = {
+        ruby_lsp = {},
+        sorbet = {},
+        gopls = {},
+        lua_ls = {
+          Lua = {
+            workspace = { checkThirdParty = false },
+            telemetry = { enable = false },
+            diagnostics = { globals = { "vim" } },
+          },
+        },
+      }
+      -- local servers = {
+      --   ruby_lsp = {},
+      -- }
+
+      mason_lspconfig.setup {
+        ensure_installed = vim.tbl_keys(servers),
+      }
+
+      mason_lspconfig.setup_handlers {
+        function(server_name)
+          require("lspconfig")[server_name].setup {
+            capabilities = capabilities,
+            -- on_attach = on_attach,
+            settings = servers[server_name],
+            filetypes = (servers[server_name] or {}).filetypes,
+          }
+        end
+      }
+
     end
   },
   {
@@ -20,6 +54,7 @@ return {
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({})
       lspconfig.tsserver.setup({})
+      -- lspconfig.gopls.setup({})
       -- lspconfig.ruby_lsp.setup({})
       -- lspconfig.sorbet.setup({})
 
