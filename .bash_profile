@@ -131,3 +131,6 @@ _rakecomplete() {
 complete -o default -o nospace -F _rakecomplete rake
 
 export RUBY_YJIT_ENABLE=1
+
+# Seems to help with tmux capturing ctrl+\ where I want that to kill the current process
+tmux unbind-key -T root 'C-\'

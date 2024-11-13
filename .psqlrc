@@ -1,0 +1,8 @@
+SET log_statement = 'all';
+SET log_duration = on;
+SET log_statement_stats = on;
+set log_min_duration_statement = 0;
+
+SELECT pg_reload_conf();
+
+\timing
