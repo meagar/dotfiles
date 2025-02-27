@@ -81,3 +81,5 @@ false
 unencode
 unescape
 LogContext
+BroadcastLogger
+Sidekiq

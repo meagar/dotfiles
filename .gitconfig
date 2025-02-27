@@ -19,9 +19,13 @@
 	ignored-change = ls-files -v
 	# check for introduced EOL-whitespace
 	sp = diff --check
-	#ss = stash show -p stash@{$1}
 [diff]
-	color = auto
+  color = auto
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+
 [status]
 	color = auto
 [core]
@@ -32,32 +36,51 @@
 	file = /Users/matthew.eagar/.gitmailmap
 [push]
 	# Only push the branch I'm currently working on
-	default = tracking
+	default = simple
+	autoSetupRemote = true
+	followTags = true
 [core]
 	# Move to the end of the line and start appending when VIM opens to edit a commit message
 	editor = vim
+	fsmonitor = true
+	untrackedCache = true
 [user]
 	name = Matthew Eagar
-	email = meagar@gmail.com
-	signingkey = 3E99B77ADC4FBD26
+	email = matt.eagar@mightynetworks.com
+#	signingkey = 3E99B77ADC4FBD26
 [pager]
 	status = false
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+#[url "git@github.com:"]
+#	insteadOf = https://github.com/
 [interactive]
 	singleKey = true
 [rebase]
 	instructionFormat = (%an <%ae>) %s
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
 [fetch]
 	prune = true
+	pruneTags = true
+	all = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[commit]
-	gpgsign = true
+#[commit]
+#	gpgsign = true
 [gc]
 	auto = 0
 [init]
 	defaultBranch = main
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[help]
+	autocorrect = prompt
+[commit]
+	verbose = true
+[pull]
+	rebase = true

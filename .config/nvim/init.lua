@@ -1,3 +1,8 @@
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>")
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>")
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>")
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>")
+
 -- old config
 -- Lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -35,11 +40,17 @@ vim.cmd("highlight ColorColumn guibg=#191923")
 -- Yank to the system clipboard
 vim.cmd("set clipboard+=unnamedplus")
 
+-- set file type on buffer creation and reading
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "*.slim" },
+  command = "set ft=slim",
+})
+
 -- Navigate vim panes better
--- vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
--- vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')
--- vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
--- vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
+-- vim.keymap.set('n', '<C-k>', ':wincmd k<CR>')
+-- vim.keymap.set('n', '<C-j>', ':wincmd j<CR>')
+-- vim.keymap.set('n', '<C-h>', ':wincmd h<CR>')
+-- vim.keymap.set('n', '<C-l>', ':wincmd l<CR>')
 --
 -- Code folding based on indentation
 vim.cmd("set foldmethod=indent")
@@ -359,7 +370,7 @@ vim.opt.linebreak = true
 -- vim.api.nvim_create_user_command("Qa", "qa", {})
 -- vim.api.nvim_create_user_command("Wq", "wq", {})
 --
--- -- Keymaps: Navigation
+-- Keymaps: Navigation
 -- vim.keymap.set("n", "<C-h>", "<C-w><C-h>")
 -- vim.keymap.set("n", "<C-j>", "<C-w><C-j>")
 -- vim.keymap.set("n", "<C-k>", "<C-w><C-k>")

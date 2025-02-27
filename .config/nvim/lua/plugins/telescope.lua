@@ -21,6 +21,12 @@ return {
           file_ignore_patterns = file_ignore_patterns
         })
       end, {})
+      vim.keymap.set("n", "<C-d>", function()
+        builtin.resume({
+          file_ignore_patterns = file_ignore_patterns
+        })
+      end, {})
+
       -- vim.keymap.set("n", "<C-d>", function()
       --   actions.cycle_history_next()
       -- end, {})

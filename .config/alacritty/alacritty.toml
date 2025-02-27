@@ -32,3 +32,12 @@ bold_italic = { style = "Bold Italic" }  # Inherits family from normal, Default 
 
 size=12.0
 
+
+[keyboard]
+
+bindings = [
+  #  { key = "K", mods = "Command", mode = "~Search", chars = "reset\n" }
+  { key = "K", mods = "Command", mode = "~Search", command = "ClearHistory" },
+  { key = "K", mods = "Command", mode = "~Search", chars = "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" }
+]
+
