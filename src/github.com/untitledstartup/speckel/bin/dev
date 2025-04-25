@@ -5,6 +5,7 @@ require 'pry-byebug'
 class Dev < Thor
   class_option :toxiproxy, desc: "Enable toxiproxy ports", aliases: "-t", type: :boolean, default: false
   class_option :compose, desc: "Run docker-compose up before starting the command", type: :boolean, default: true
+  class_option :aws, desc: "Perform `aws sso login` if required", type: :boolean, default: true
   class_option :verbose, desc: "Extra verbose output", type: :boolean, default: false
 
   desc "auth", "Authenticate with AWS"
@@ -66,7 +67,9 @@ class Dev < Thor
 
 
   desc "web", "Start the Rails server via Foreman"
+  option :concurrency, desc: "Run concurrent ruby processes", aliases: "-c", type: :numeric
   def web
+    ENV['WEB_CONCURRENCY'] = options[:concurrency].to_s if options[:concurrency]
     run(foreman.fetch('web'))
   end
 
@@ -120,9 +123,9 @@ class Dev < Thor
       ENV['SPECKEL_REDIS_SIDEKIQ_PORT']='47004'
     end
 
-    if options[:compose]
-      system('./bin/dc up -d')
-    end
+    system('./bin/dc up -d') if options[:compose]
+
+    system("./bin/aws_auth.sh") if options[:aws]
 
     system(cmd)
   end
