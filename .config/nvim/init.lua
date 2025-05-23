@@ -17,6 +17,24 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   })
 end
 
+-- Trim trailing whitespace on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.rb",
+  callback = function()
+    local save_cursor = vim.fn.getpos(".")
+    vim.cmd([[%s/\s\+$//e]])
+    vim.fn.setpos(".", save_cursor)
+  end,
+})
+
+
+-- Per https://github.com/swaits/zellij-nav.nvim
+vim.api.nvim_create_autocmd("VimLeave", {
+    pattern = "*",
+    command = "silent !zellij action switch-mode normal"
+})
+
+
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")

@@ -9,7 +9,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "tsserver", "gopls" }
+        ensure_installed = { "lua_ls", "ts_ls", "gopls" }
       })
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -39,16 +39,17 @@ return {
         ensure_installed = vim.tbl_keys(servers),
       }
 
-      mason_lspconfig.setup_handlers {
-        function(server_name)
-          require("lspconfig")[server_name].setup {
-            capabilities = capabilities,
-            -- on_attach = on_attach,
-            settings = servers[server_name],
-            filetypes = (servers[server_name] or {}).filetypes,
-          }
-        end
-      }
+
+      -- mason_lspconfig.setup_handlers {
+      --   function(server_name)
+      --     require("lspconfig")[server_name].setup {
+      --       capabilities = capabilities,
+      --       -- on_attach = on_attach,
+      --       settings = servers[server_name],
+      --       filetypes = (servers[server_name] or {}).filetypes,
+      --     }
+      --   end
+      -- }
 
     end
   },
@@ -57,7 +58,7 @@ return {
     config = function()
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({})
-      lspconfig.tsserver.setup({})
+      lspconfig.ts_ls.setup({})
       -- lspconfig.gopls.setup({})
       -- lspconfig.ruby_lsp.setup({version = "0.5.1"})
       -- lspconfig.sorbet.setup({})
@@ -66,15 +67,15 @@ return {
       -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
       -- vim.keymap.set({"n", "v"}, "D", vim.lsp.buf.code_action, {})
       vim.opt.signcolumn = "yes"
-      -- vim.api.nvim_create_autocmd("FileType", {
-      --   pattern = "ruby",
-      --   callback = function()
-      --     vim.lsp.start {
-      --       name = "rubocop",
-      --       cmd = { "bundle", "exec", "rubocop", "--lsp" },
-      --     }
-      --   end,
-      -- })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "ruby",
+        callback = function()
+          vim.lsp.start {
+            name = "rubocop",
+            cmd = { "bundle", "exec", "rubocop", "--lsp" },
+          }
+        end,
+      })
 
       vim.api.nvim_create_autocmd("BufWritePre", {
         pattern = "*.rb",

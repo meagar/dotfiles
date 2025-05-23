@@ -1,4 +1,5 @@
 return {
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   {
     "nvim-telescope/telescope.nvim",
     tag = '0.1.6',
@@ -9,6 +10,7 @@ return {
       local file_ignore_patterns = {
         "sorbet/",
         "public/",
+        "vendor/"
       }
 
       vim.keymap.set("n", "<C-p>", function()
@@ -23,6 +25,16 @@ return {
       end, {})
       vim.keymap.set("n", "<C-d>", function()
         builtin.resume({
+          file_ignore_patterns = file_ignore_patterns
+        })
+      end, {})
+      vim.keymap.set("n", "<C-a>", function()
+        builtin.grep_string({
+          file_ignore_patterns = file_ignore_patterns
+        })
+      end, {})
+      vim.keymap.set("n", "<C-s>", function()
+        builtin.buffers({
           file_ignore_patterns = file_ignore_patterns
         })
       end, {})
@@ -56,12 +68,20 @@ return {
             --      do the following
             --   codeactions = false,
             -- }
+          },
+          fzf = {
+            fuzzy = true,                    -- false will only do exact matching
+            override_generic_sorter = true,  -- override the generic sorter
+            override_file_sorter = true,     -- override the file sorter
+            case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                             -- the default case_mode is "smart_case"
           }
         }
       }
       -- To get ui-select loaded and working with telescope, you need to call
       -- load_extension, somewhere after setup function:
       require("telescope").load_extension("ui-select")
+      require('telescope').load_extension('fzf')
     end
   }
 }
