@@ -28,12 +28,25 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 
+-- Show diagnostic floating window after stopping on a warning
+vim.o.updatetime = 250  -- Reduce delay before CursorHold triggers (default is 4000ms)
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+  callback = function()
+    vim.diagnostic.open_float(nil, { focus = false })
+  end
+})
+
 -- Per https://github.com/swaits/zellij-nav.nvim
 vim.api.nvim_create_autocmd("VimLeave", {
     pattern = "*",
     command = "silent !zellij action switch-mode normal"
 })
 
+-- Treat .thor files like Ruby
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "*.thor",
+  command = "set filetype=ruby"
+})
 
 vim.opt.rtp:prepend(lazypath)
 
