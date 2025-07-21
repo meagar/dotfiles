@@ -1,0 +1,24 @@
+DEST=${1:-"origin/main"}
+echo "Squashing onto $DEST"
+
+DIRTY="false"
+if [[ -n $(git status --porcelain -uno) ]]; then
+  DIRTY="true"
+fi
+
+if [ "$DIRTY" = "true" ]; then
+  echo "Stashing changes"
+  git stash
+fi
+
+OLD_HEAD=$(git rev-parse HEAD)
+echo "The current commit is ${OLD_HEAD}"
+
+git fetch && git reset --hard origin/master && git merge --squash "$OLD_HEAD" && git commit
+
+# Cleanup - restore stash, if necessary
+if [ "$DIRTY" = "true" ]; then
+  echo "Unstashing changes"
+  git stash pop
+fi
+
