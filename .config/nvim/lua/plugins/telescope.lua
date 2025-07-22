@@ -9,7 +9,7 @@ return {
       -- local actions = require("telescope.actions")
       local file_ignore_patterns = {
         "sorbet/",
-        "public/",
+        "/public/",
         "vendor/"
       }
 
