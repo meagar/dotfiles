@@ -1,21 +1,46 @@
+require("config.lazy")
+
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>")
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>")
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>")
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>")
 
--- old config
--- Lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
+-- -- old config
+-- -- Lazy.nvim
+-- local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+-- if not (vim.uv or vim.loop).fs_stat(lazypath) then
+--   vim.fn.system({
+--     "git",
+--     "clone",
+--     "--filter=blob:none",
+--     "https://github.com/folke/lazy.nvim.git",
+--     "--branch=stable", -- latest stable release
+--     lazypath,
+--   })
+-- end
+--
+--
+-- vim.opt.rtp:prepend(lazypath)
+--
+-- -- Make sure to setup `mapleader` and `maplocalleader` before
+-- -- loading lazy.nvim so that mappings are correct.
+-- -- This is also a good place to setup other settings (vim.opt)
+-- vim.g.mapleader = " "
+-- vim.g.maplocalleader = "\\"
+--
+-- -- Setup lazy.nvim
+-- require("lazy").setup({
+--   spec = {
+--     -- import your plugins
+--     { import = "plugins" },
+--   },
+--   -- Configure any other settings here. See the documentation for more details.
+--   -- colorscheme that will be used when installing plugins.
+--   install = { colorscheme = { "habamax" } },
+--   -- automatically check for plugin updates
+--   checker = { enabled = true },
+-- })
+--
 
 -- Trim trailing whitespace on save
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -26,7 +51,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     vim.fn.setpos(".", save_cursor)
   end,
 })
-
 
 -- Show diagnostic floating window after stopping on a warning
 vim.o.updatetime = 250  -- Reduce delay before CursorHold triggers (default is 4000ms)
@@ -48,9 +72,12 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
   command = "set filetype=ruby"
 })
 
-vim.opt.rtp:prepend(lazypath)
+-- Treat .hamlbars files like haml
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "*.hamlbars",
+  command = "set filetype=haml"
+})
 
-require("lazy").setup("plugins")
 
 vim.cmd("set spell")
 vim.cmd("set ignorecase") -- required before smartcase
@@ -64,8 +91,8 @@ vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 
--- Higlight the 80th column
-vim.cmd("set colorcolumn=80")
+-- Higlight the 120th column
+vim.cmd("set colorcolumn=120")
 vim.cmd("highlight ColorColumn guibg=#191923")
 
 -- Yank to the system clipboard

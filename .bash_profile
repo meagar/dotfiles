@@ -17,7 +17,7 @@ alias gco="git checkout"
 alias gm="git merge --no-ff"
 alias gmf="git merge -ff-only"
 alias gp="git pull"
-alias gci="git commit"
+alias gci="git commit -n"
 alias gap="git add -p"
 alias gpfwl="git push --force-with-lease"
 
@@ -31,12 +31,13 @@ alias foreman="bundle exec foreman"
 alias guard="bundle exec guard"
 alias srb="bundle exec srb"
 alias tp="bundle exec tapioca"
+alias jobs="jobs -l" # Include process ID
 
-alias jobs="jobs -l"
+alias claude="ASDF_NODEJS_VERSION=23.7.0 asdf exec claude"
 
 export LESS='-RNM'
 
-export PS1='\n \[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\]\n\[\e[1;32m\]$(__git_ps1) \$\[\e[m\] \[\e[0m\]'
+export PS1='\n\[\e[m\]\[\e[1;34m\]\w\[\e[m\]\[\e[1;32m\]$(__git_ps1)\n\$\[\e[m\] \[\e[0m\]'
 # Staging:
 #export PS1='\n\[\e[0;33m\]\h/\u\[\e[m\] \[\e[1;33m\]\w\[\e[m\] \[\e[0;33m\]$(parse_git_branch) \$\[\e[m\] \[\e[0m\]'
 # Production
@@ -71,7 +72,7 @@ alias tgp-prod="AWS_PROFILE=production tgp"
 alias tg-prod="AWS_PROFILE=production tg"
 alias tgp-dev="AWS_PROFILE=dev tgp"
 alias tg-dev="AWS_PROFILE=dev tg"
-alias dc="docker-compose -f docker/development/compose.yml"
+alias dc="docker-compose"
 
 export EDITOR=nvim
 
@@ -82,26 +83,31 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH=/opt/homebrew/opt/openssl@3/bin:$PATH
 export PATH="~/go/bin:$PATH"
 
-#export GOROOT=/usr/local/go/
-#export PATH="$PATH:~/.cargo/bin"
-#. "$HOME/.cargo/env"
-#export PATH="~/.rubies/ruby-master/bin:/usr/local/sbin:$PATH"
-#export PATH="~/.local/bin:$PATH"
+export GOPATH=~/.go
+export GOROOT=/usr/local/go/
+export PATH="$PATH:~/.cargo/bin"
+export PATH="~/.local/bin:$PATH"
+export PATH="~/.go/bin:$PATH"
 
 # Enable rbenv shims
-#eval "$(rbenv init -)"
+eval "$(rbenv init -)"
 alias vim=nvim
 alias vi=nvim
 
 # Ctrl+D won't close the shell; instead must type "exit" or "logout"
 set -o ignoreeof
 
+#export PATH="~/.rubies/ruby-master/bin:/usr/local/sbin:$PATH"
+. "$HOME/.cargo/env"
+
+export PATH="/Applications/Postgres.app/Contents/Versions/16/bin:${PATH}"
+
 # The next line updates PATH for the Google Cloud SDK.
-# if [ -f '/Users/meagar/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/Users/meagar/Downloads/google-cloud-sdk/path.bash.inc'; fi
+if [ -f '/Users/meagar/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/Users/meagar/Downloads/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-#if [ -f '/Users/meagar/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/meagar/Downloads/google-cloud-sdk/completion.bash.inc'; fi
-#export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+if [ -f '/Users/meagar/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/meagar/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 _thorcomplete() {
   local cur
@@ -126,24 +132,5 @@ complete -o default -o nospace -F _rakecomplete rake
 export RUBY_YJIT_ENABLE=1
 
 # Seems to help with tmux capturing ctrl+\ where I want that to kill the current process
-
-#tmux unbind-key -T root 'C-\'
-
-#ssh-add ~/.ssh/github_ed25519
-#ssh-add ~/.ssh/mighty-session-manager-production
-#ssh-add ~/.ssh/mighty-session-manager-staging
-#-e 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-
-alias dev="mightydev"
-
-# Postgres.app binaries
-export PATH="/Applications/Postgres.app/Contents/Versions/17/bin:$PATH"
-
-source ~/.bash_completion.d/jira.sh
-. "$HOME/.cargo/env"
-
-# uv
-export PATH="/Users/matteagar/.local/bin:$PATH"
-
-source ~/.git-prompt.sh
+# tmux unbind-key -T root 'C-\'
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
