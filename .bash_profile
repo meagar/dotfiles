@@ -1,6 +1,11 @@
+# For testing Ruby 3.1 migration
+export RUBYOPT="-W:deprecated"
+
 alias .git="git --work-tree=$HOME --git-dir=$HOME/src/github.com/meagar/dotfiles/.git"
+alias gitmine="git --work-tree=$HOME --git-dir=$HOME/.gitmine"
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
+export BUNDLE_PATH=vendor/bundle
 
 alias ls='ls -lFGh'
 alias rm='rm -i'
@@ -37,13 +42,20 @@ alias claude="ASDF_NODEJS_VERSION=23.7.0 asdf exec claude"
 
 export LESS='-RNM'
 
-export PS1='\n\[\e[m\]\[\e[1;34m\]\w\[\e[m\]\[\e[1;32m\]$(__git_ps1)\n\$\[\e[m\] \[\e[0m\]'
+meagar_dependencies_next() {
+  if [ "$DEPENDENCIES_NEXT" = "1" ]; then
+    echo -e " \033[0;31mnext\033[0m "
+  fi
+}
+
+export PS1='\n\[\e[m\]\[\e[1;34m\]\w\[\e[m\]\[\e[1;32m\]$(__git_ps1)$(meagar_dependencies_next)\n\$\[\e[m\] \[\e[0m\]'
 # Staging:
 #export PS1='\n\[\e[0;33m\]\h/\u\[\e[m\] \[\e[1;33m\]\w\[\e[m\] \[\e[0;33m\]$(parse_git_branch) \$\[\e[m\] \[\e[0m\]'
 # Production
 #export PS1='\n\[\e[0;31m\]\h/\u\[\e[m\] \[\e[1;31m\]\w\[\e[m\] \[\e[0;31m\]$(parse_git_branch) \$\[\e[m\] \[\e[0m\]'
 
-export USER_BASH_COMPLETION_DIR=~/.bash_completion.d
+#export USER_BASH_COMPLETION_DIR=~/.bash_completion.d
+
 
 export PATH="/usr/local/sbin:$PATH"
 
@@ -75,13 +87,14 @@ alias tg-dev="AWS_PROFILE=dev tg"
 alias dc="docker-compose"
 
 export EDITOR=nvim
+alias vim=nvim
+alias vi=nvim
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
 export PATH=/opt/homebrew/opt/openssl@3/bin:$PATH
-export PATH="~/go/bin:$PATH"
 
 export GOPATH=~/.go
 export GOROOT=/usr/local/go/
@@ -91,8 +104,6 @@ export PATH="~/.go/bin:$PATH"
 
 # Enable rbenv shims
 eval "$(rbenv init -)"
-alias vim=nvim
-alias vi=nvim
 
 # Ctrl+D won't close the shell; instead must type "exit" or "logout"
 set -o ignoreeof
