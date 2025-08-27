@@ -43,7 +43,8 @@ export PS1='\n\[\e[m\]\[\e[1;34m\]\w\[\e[m\]\[\e[1;32m\]$(__git_ps1)\n\$\[\e[m\]
 # Production
 #export PS1='\n\[\e[0;31m\]\h/\u\[\e[m\] \[\e[1;31m\]\w\[\e[m\] \[\e[0;31m\]$(parse_git_branch) \$\[\e[m\] \[\e[0m\]'
 
-export USER_BASH_COMPLETION_DIR=~/.bash_completion.d
+#export USER_BASH_COMPLETION_DIR=~/.bash_completion.d
+
 
 export PATH="/usr/local/sbin:$PATH"
 
@@ -75,13 +76,14 @@ alias tg-dev="AWS_PROFILE=dev tg"
 alias dc="docker-compose"
 
 export EDITOR=nvim
+alias vim=nvim
+alias vi=nvim
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
 export PATH=/opt/homebrew/opt/openssl@3/bin:$PATH
-export PATH="~/go/bin:$PATH"
 
 export GOPATH=~/.go
 export GOROOT=/usr/local/go/
@@ -91,8 +93,6 @@ export PATH="~/.go/bin:$PATH"
 
 # Enable rbenv shims
 eval "$(rbenv init -)"
-alias vim=nvim
-alias vi=nvim
 
 # Ctrl+D won't close the shell; instead must type "exit" or "logout"
 set -o ignoreeof
