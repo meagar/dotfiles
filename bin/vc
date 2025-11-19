@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+conflicts=`git diff --name-only --diff-filter=U`
+
+if [[ -z "$conflicts" ]]; then
+  echo "No conflicts to resolve"
+  exit
+fi
+
+for c in $conflicts; do
+  echo "Editing $c"
+  $EDITOR "$c"
+
+  while true; do
+    read -n 1 -p "Mark $c resolved? (y/n/q) " yn
+    case $yn in
+      [Yy]* )
+        git add -u $c
+        break
+        ;;
+      [Nn]* )
+        break
+        ;;
+      [Qq]* )
+        exit
+        break
+        ;;
+      * )
+        echo "Please answer yes or no."
+        ;;
+    esac
+  done
+done
