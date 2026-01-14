@@ -1,5 +1,4 @@
 #!/bin/bash
 
-WHAT=${1-beep}
+printf '\a'
 
-say -v "Samantha (Enhanced)" "$WHAT"

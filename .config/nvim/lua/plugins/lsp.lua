@@ -56,9 +56,9 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local lspconfig = require("lspconfig")
+      --local lspconfig = require("lspconfig")
       -- lspconfig.lua_ls.setup({})
-      lspconfig.ts_ls.setup({})
+      -- vim.lsp.config('ts_ls').setup({})
       -- lspconfig.gopls.setup({})
       -- lspconfig.ruby_lsp.setup({version = "0.5.1"})
       -- lspconfig.sorbet.setup({})
@@ -83,6 +83,21 @@ return {
           vim.lsp.buf.format()
         end,
       })
+
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = "*.thor",
+        callback = function()
+          vim.lsp.buf.format()
+        end,
+      })
+
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = "*.rake",
+        callback = function()
+          vim.lsp.buf.format()
+        end,
+      })
+
     end
   }
 }

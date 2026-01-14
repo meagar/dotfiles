@@ -1,4 +1,14 @@
-DEST=${1:-"origin/main"}
+# enable tab-completion by adding to .bash_profile:
+# _git_squash() {
+#   __gitcomp_nl "$(__git_refs)"
+# }
+# complete -F __git_wrap__git_main git-squash
+
+if [ -n "$1" ]; then
+  DEST="$1"
+else
+  DEST=$(git rev-parse --abbrev-ref origin/HEAD 2>/dev/null) || DEST="origin/main"
+fi
 echo "Squashing onto $DEST"
 
 DIRTY="false"
@@ -14,7 +24,7 @@ fi
 OLD_HEAD=$(git rev-parse HEAD)
 echo "The current commit is ${OLD_HEAD}"
 
-git fetch && git reset --hard origin/master && git merge --squash "$OLD_HEAD" && git commit
+git fetch && git reset --hard "$DEST" && git merge --squash "$OLD_HEAD" && git commit
 
 # Cleanup - restore stash, if necessary
 if [ "$DIRTY" = "true" ]; then

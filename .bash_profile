@@ -1,6 +1,3 @@
-# For testing Ruby 3.1 migration
-export RUBYOPT="-W:deprecated"
-
 alias .git="git --work-tree=$HOME --git-dir=$HOME/src/github.com/meagar/dotfiles/.git"
 alias gitmine="git --work-tree=$HOME --git-dir=$HOME/.gitmine"
 
@@ -145,3 +142,11 @@ export RUBY_YJIT_ENABLE=1
 # Seems to help with tmux capturing ctrl+\ where I want that to kill the current process
 # tmux unbind-key -T root 'C-\'
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+term_title() {
+  echo -ne "\033]0;$*\007"
+}
+
+# Enable tab-completion for sp
+source <(sp completion bash)
+

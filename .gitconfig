@@ -30,7 +30,7 @@
 [status]
 	color = auto
 [core]
-	excludesfile = /Users/matt.eagar/.gitignore
+	excludesfile = /Users/matteagar/.gitignore
 	autocrlf=input
 [mailmap]
 	# Use by my above lg alias to map committers to their two character initials
@@ -72,3 +72,13 @@
 	auto = 0
 [init]
 	defaultBranch = main
+[includeIf "hasconfig:remote.*.url:https://github.com/untitledstartup/*"]
+	path = /Users/matteagar/.config/git/shared-aliases.gitconfig
+[includeIf "hasconfig:remote.*.url:ssh://git@github.com/untitledstartup/*"]
+	path = /Users/matteagar/.config/git/shared-aliases.gitconfig
+[includeIf "hasconfig:remote.*.url:git@github.com:untitledstartup/*"]
+	path = /Users/matteagar/.config/git/shared-aliases.gitconfig
+[submodule]
+	recurse = true
+[worktree]
+	useRelativePaths = true

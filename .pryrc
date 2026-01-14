@@ -1,5 +1,3 @@
-puts "Loading ~/.pryrc"
-
 Pry.commands.alias_command 's', 'step'
 Pry.commands.alias_command 'n', 'next'
 Pry.commands.alias_command 'c', 'continue'
@@ -7,16 +5,7 @@ Pry.commands.alias_command 'u', 'up'
 
 #Pry.run_command 'sorbet-unwrap' if defined?(Sorbet)
 
-def step_into(&block)
-  binding.pry
-  yield
-end
-
-if defined?(ActiveRecord)
-  def mne_ar_log(on = true)
-    ActiveRecord::Base.logger = Logger.new(on ? STDOUT : "/dev/null")
-  end
-end
+p self
 
 def Kernel.count_queries(&block)
   semaphore = Thread::Mutex.new

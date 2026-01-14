@@ -1,9 +1,17 @@
 require("config.lazy")
 
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>")
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>")
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>")
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>")
+vim.opt.modeline = false
+vim.opt.modelines = 0
+
+vim.api.nvim_create_user_command('CopyRelPath', function()
+  local path = vim.fn.expand('%')
+  vim.fn.setreg('+', path)
+end, {})
+
+-- vim.keymap.set("n", "<C-h>", "<C-w><C-h>")
+-- vim.keymap.set("n", "<C-j>", "<C-w><C-j>")
+-- vim.keymap.set("n", "<C-k>", "<C-w><C-k>")
+-- vim.keymap.set("n", "<C-l>", "<C-w><C-l>")
 
 -- -- old config
 -- -- Lazy.nvim
@@ -77,7 +85,6 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
   pattern = "*.hamlbars",
   command = "set filetype=haml"
 })
-
 
 vim.cmd("set spell")
 vim.cmd("set ignorecase") -- required before smartcase
