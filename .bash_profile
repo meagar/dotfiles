@@ -72,6 +72,7 @@ export PATH="$HOME/bin:$PATH"
 set -o vi
 
 export CDPATH="$CDPATH:$HOME/src/github.com/"
+export CDPATH="$CDPATH:$HOME/src/codeberg.org/"
 
 alias tf="terragrunt"
 alias tg="terragrunt"
@@ -150,3 +151,11 @@ term_title() {
 # Enable tab-completion for sp
 source <(sp completion bash)
 
+# git-squash completion
+_git_squash() {
+  __gitcomp_nl "$(__git_refs)"
+}
+complete -F __git_wrap__git_main git-squash
+
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH="$PATH:/Users/matteagar/.local/bin"

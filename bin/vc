@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# vc - "vim conflicts"
+# iterate over all conflicts, edit them in vim, prompt whether conflicts were resolved
+
 conflicts=`git diff --name-only --diff-filter=U`
 
 if [[ -z "$conflicts" ]]; then

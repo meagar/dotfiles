@@ -1,5 +1,19 @@
 require("config.lazy")
 
+vim.api.nvim_set_hl(0, "DumbSpellingMistakes", {
+  fg = "Black",      -- text color
+  bg = "Yellow",     -- background highlight
+  bold = true,
+})
+
+-- auto-attach to any filetype
+vim.api.nvim_create_autocmd("VimEnter", {
+  pattern = "*",
+  callback = function()
+    vim.cmd([[syntax match DumbSpellingMistakes /\v<(feautre)>/]])
+  end,
+})
+
 vim.opt.modeline = false
 vim.opt.modelines = 0
 
