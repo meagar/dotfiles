@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if gh pr view --web 2>/dev/null; then
+  exit 0
+fi
+
+# No PR exists — open the creation page
+REPO_URL=$(gh repo view --json url -q .url)
+BRANCH=$(git branch --show-current)
+open "${REPO_URL}/compare/${BRANCH}?expand=1"
