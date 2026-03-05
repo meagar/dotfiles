@@ -41,7 +41,7 @@
 	autoSetupRemote = true
 [core]
 	# Move to the end of the line and start appending when VIM opens to edit a commit message
-	editor = vim
+	editor = nvim
 [user]
 	name = Matthew Eagar
 	email = meagar@gmail.com
@@ -72,12 +72,6 @@
 	auto = 0
 [init]
 	defaultBranch = main
-[includeIf "hasconfig:remote.*.url:https://github.com/untitledstartup/*"]
-	path = /Users/matteagar/.config/git/shared-aliases.gitconfig
-[includeIf "hasconfig:remote.*.url:ssh://git@github.com/untitledstartup/*"]
-	path = /Users/matteagar/.config/git/shared-aliases.gitconfig
-[includeIf "hasconfig:remote.*.url:git@github.com:untitledstartup/*"]
-	path = /Users/matteagar/.config/git/shared-aliases.gitconfig
 [submodule]
 	recurse = true
 [worktree]

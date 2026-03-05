@@ -94,11 +94,11 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export PATH=/opt/homebrew/opt/openssl@3/bin:$PATH
 
-export GOPATH=~/.go
-export GOROOT=/usr/local/go/
-export PATH="$PATH:~/.cargo/bin"
-export PATH="~/.local/bin:$PATH"
-export PATH="~/.go/bin:$PATH"
+export GOPATH="$HOME/.go"
+export GOROOT="$(brew --cellar go)/1.26.0/libexec"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.go/bin:$PATH"
 
 # Enable rbenv shims
 eval "$(rbenv init -)"
@@ -141,7 +141,7 @@ complete -o default -o nospace -F _rakecomplete rake
 export RUBY_YJIT_ENABLE=1
 
 # Seems to help with tmux capturing ctrl+\ where I want that to kill the current process
-# tmux unbind-key -T root 'C-\'
+tmux unbind-key -T root 'C-\'
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 term_title() {
@@ -150,6 +150,7 @@ term_title() {
 
 # Enable tab-completion for sp
 source <(sp completion bash)
+alias spcd='cd $SP_PATH'
 
 # git-squash completion
 _git_squash() {
